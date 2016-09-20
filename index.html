@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="LibraryBookApp">
+    <h1>Specific Library</h1>
+    <section ng-controller="BookListener">
+        <label for="user"></label>
+        <input type="text" ng-model="user" placeholder="Do you have a name?">
+        
+        <ol>
+            <li ng-repeat="element in books">{{ element.title }} by {{ element.author }}
+                <button ng-click="borrowTheBook(element.title)">Check Out</button>
+                <p>Borrower: {{ element.borrower }}</p>
+            </li>
+        </ol>
+    </section>
+
+    <section ng-controller="UserSearch">
+        <label for="person"></label>
+        <input type="text" ng-model="person" placeholder="Who are you looking for?">
+        <button ng-click="getTheBooks()">Search</button>
+        <ol>
+            <li ng-repeat="element in books">{{ element.title }}</li>
+        </ol>
+    </section>
+</body>
+</html>
